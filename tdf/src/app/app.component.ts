@@ -9,5 +9,5 @@ import { User } from './user';
 export class AppComponent {
   topics = [ "Medical ", "Science"," Social" ]
 
-  userModel = new User("Robo","robo@test.com", 5555,'','morning', true)
+  userModel = new User("","robo@test.com", 5555,'','morning', true)
 }
