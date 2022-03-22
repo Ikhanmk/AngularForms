@@ -21,13 +21,13 @@
       <label>Phone</label>
       <input type="tel" #phone = "ngModel" [class.is-invalid] = "phone.invalid && phone.touched" class="form-control" name="phone" pattern="^\d{10}$" required [(ngModel)]="userModel.phone" />
 
-      <!-- <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number is required</small> -->
+      <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number is required</small>
 
-     <div  *ngIf="phone.errors && (phone.invalid || phone.touched)">
+     <!-- <div  *ngIf="phone.errors && (phone.invalid || phone.touched)">
        <small class = "text-danger" *ngIf="phone.errors.required">Phone number is required</small>
        <small class = "text-danger" *ngIf="phone.errors.pattern">Phone number must be 10 digits</small>
 
-     </div> 
+     </div>  -->
 
     </div>
 
@@ -59,6 +59,6 @@
       <label class="form-check-label">send me promotional offers</label>
     </div>
 
-    <button class="btn btn-primary" type="button">Submit</button>
+    <button [disabled] = "useForm.form.invalid" class="btn btn-primary" type="button">Submit</button>
   </form>
 </div>
