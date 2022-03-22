@@ -1,6 +1,7 @@
 <h1>Sample Form</h1>
 <div class="container-fluid mb-5">
-  <form #useForm="ngForm">
+  <form #useForm="ngForm" (ngSubmit) = "onSubmit()">
+
     <div class="form-group">
       <label>Name</label>
       <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control"
