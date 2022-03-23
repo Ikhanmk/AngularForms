@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +8,30 @@ import { FormBuilder } from '@angular/forms';
 })
 export class AppComponent {
 
+  // registrationForm : FormGroup;
+
+  get alternateEmails(){
+    return this.registrationForm.get('alternateEmails') as FormArray;
+  }
+
+  addAlternateEmail(){
+    this.alternateEmails.push(this.fb.control(''))
+  }
+
+
   constructor(private fb: FormBuilder){}
 
   registrationForm = this.fb.group({
     userName :  ['Imran'],
+    email: [''],
     password :  [''],
     confirmPassword :  [''],
     address : this.fb.group({
       city :  [''],
       state :  [''],
       postalCode:  ['']
-    })
+    }),
+    alternateEmails : this.fb.array([])
   })
 
   
