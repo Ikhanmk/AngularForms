@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,29 +7,21 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  registrationForm = new FormGroup({
-    userName : new FormControl('Imran'),
-    password : new FormControl(''),
-    confirmPassword : new FormControl(''),
-    address : new FormGroup({
-      city : new FormControl(''),
-      state : new FormControl(''),
-      postalCode: new FormControl('')
+
+  constructor(private fb: FormBuilder){}
+
+  registrationForm = this.fb.group({
+    userName :  ['Imran'],
+    password :  [''],
+    confirmPassword :  [''],
+    address : this.fb.group({
+      city :  [''],
+      state :  [''],
+      postalCode:  ['']
     })
   })
 
-  // loadApiData() {
-  //   this.registrationForm.setValue({---> setValue is used when we have to set values to all the form fields, if u skip a field it gives error
-  //     userName: "Bruce",
-  //     password : "test",
-  //     confirmPassword: "test",
-  //     address: {
-  //       city: 'city',
-  //       state: 'state',
-  //       postalCode: "67575758"
-  //     }
-  //   })
-  // }
+  
 
   loadApiData() {
       this.registrationForm.patchValue({ 
